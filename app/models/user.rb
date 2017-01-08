@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  include BCrypt
+  has_secure_password
+
   has_many :likes, :dependent => :destroy
   has_many :statuses, :dependent => :destroy
 
@@ -11,4 +14,5 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :password, length: { in: 6..20 }
   validates_confirmation_of :password
+
 end
