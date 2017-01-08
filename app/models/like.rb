@@ -4,5 +4,6 @@ class Like < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :status_id, presence: true
+  validates_uniqueness_of   :status_id, scope: :user_id
 
 end

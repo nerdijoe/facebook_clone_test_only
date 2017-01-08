@@ -58,6 +58,7 @@ RSpec.describe LikesController, type: :controller do
 
     it "redirects to the status_path" do
       like =  Like.create(user_id: user.id, status_id: status1.id)
+      byebug
       delete :destroy, {:id => like.to_param}
       expect(response).to redirect_to(status_path(status1))
       expect(flash[:notice]).to eq "You unlike."
