@@ -5,8 +5,6 @@ class UsersController < ApplicationController
   end
 
   def create
-
-    # @user = User.new(name: name, email: email, password: password, password_confirmation: password_confirmation)
     @user = User.new(user_params)
     if @user.save
       redirect_to user_path(User.last.id), notice: "Account created. Please log in now."
@@ -29,6 +27,10 @@ class UsersController < ApplicationController
       # render edit_user_path
       render 'edit'
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   def destroy
